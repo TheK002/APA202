@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f8f7f2;
+  font-family: 'Courier New', 'SF Mono', 'Menlo', monospace;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.type-container {
+  max-width: 1100px;
+  width: 100%;
+  background: transparent;
+}
+
+.the-word {
+  font-family: 'Times New Roman', 'Georgia', 'Iowan Old Style', serif;
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.family-word {
+  font-family: 'Helvetica Neue', 'Arial Black', 'Impact', sans-serif;
+  font-size: clamp(3.2rem, 10vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #111;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #111;
+  display: inline-block;
+  padding-bottom: 0.2em;
+}
+
+.sub-categories {
+  margin: 1.5rem 0 2rem 0;
+}
+
+.category-line {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #2c2c2c;
+  text-transform: uppercase;
+}
+
+.features-row {
+  margin-top: 3rem;
+  border-top: 2px dashed #bbb;
+  padding-top: 2rem;
+  font-family: 'Courier New', 'Courier', monospace;
+}
+
+.features-text {
+  font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: #2d2d2d;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1.5rem;
+  }
+  .family-word {
+    border-bottom-width: 2px;
+  }
+  .features-row {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+}
