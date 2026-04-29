@@ -1,0 +1,118 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|c:\\users\\ilkin\\onedrive\\desktop\\07-nullableenumstruct\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|c:\\users\\ilkin\\onedrive\\desktop\\07-nullableenumstruct\\enums\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|solutionrelative:enums\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|c:\\users\\ilkin\\onedrive\\desktop\\07-nullableenumstruct\\enums\\drinksize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|solutionrelative:enums\\drinksize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|c:\\users\\ilkin\\onedrive\\desktop\\07-nullableenumstruct\\enums\\drinktype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|solutionrelative:enums\\drinktype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|c:\\users\\ilkin\\onedrive\\desktop\\07-nullableenumstruct\\07-nullableenumstruct.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|solutionrelative:07-nullableenumstruct.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|c:\\users\\ilkin\\onedrive\\desktop\\07-nullableenumstruct\\drinkorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31A72761-3DD4-19F9-741A-125F47482EB4}|07-NullableEnumStruct.csproj|solutionrelative:drinkorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderStatus.cs",
+              "DocumentMoniker": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\Enums\\OrderStatus.cs",
+              "RelativeDocumentMoniker": "Enums\\OrderStatus.cs",
+              "ToolTip": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\Enums\\OrderStatus.cs",
+              "RelativeToolTip": "Enums\\OrderStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:42:30.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DrinkSize.cs",
+              "DocumentMoniker": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\Enums\\DrinkSize.cs",
+              "RelativeDocumentMoniker": "Enums\\DrinkSize.cs",
+              "ToolTip": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\Enums\\DrinkSize.cs",
+              "RelativeToolTip": "Enums\\DrinkSize.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:42:13.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DrinkType.cs",
+              "DocumentMoniker": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\Enums\\DrinkType.cs",
+              "RelativeDocumentMoniker": "Enums\\DrinkType.cs",
+              "ToolTip": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\Enums\\DrinkType.cs",
+              "RelativeToolTip": "Enums\\DrinkType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:41:54.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "07-NullableEnumStruct.csproj",
+              "DocumentMoniker": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\07-NullableEnumStruct.csproj",
+              "RelativeDocumentMoniker": "07-NullableEnumStruct.csproj",
+              "ToolTip": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\07-NullableEnumStruct.csproj",
+              "RelativeToolTip": "07-NullableEnumStruct.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-26T12:39:45.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DrinkOrder.cs",
+              "DocumentMoniker": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\DrinkOrder.cs",
+              "RelativeDocumentMoniker": "DrinkOrder.cs",
+              "ToolTip": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\DrinkOrder.cs",
+              "RelativeToolTip": "DrinkOrder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:33:13.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\ilkin\\OneDrive\\Desktop\\07-NullableEnumStruct\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAYwD4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:31:29.218Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

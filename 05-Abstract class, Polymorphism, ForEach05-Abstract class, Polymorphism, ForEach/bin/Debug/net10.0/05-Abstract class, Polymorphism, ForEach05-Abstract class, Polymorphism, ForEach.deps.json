@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "05-Abstract class, Polymorphism, ForEach05-Abstract class, Polymorphism, ForEach/1.0.0": {
+        "runtime": {
+          "05-Abstract class, Polymorphism, ForEach05-Abstract class, Polymorphism, ForEach.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "05-Abstract class, Polymorphism, ForEach05-Abstract class, Polymorphism, ForEach/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,14 @@
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\bin\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.exe
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\bin\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.deps.json
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\bin\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.runtimeconfig.json
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\bin\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.dll
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\bin\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.pdb
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\obj\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\obj\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.AssemblyInfoInputs.cache
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\obj\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.AssemblyInfo.cs
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\obj\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.csproj.CoreCompileInputs.cache
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\obj\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.dll
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\obj\Debug\net8.0\refint\09-UpcastingDowncastingExplicitImplicit.dll
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\obj\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.pdb
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\obj\Debug\net8.0\09-UpcastingDowncastingExplicitImplicit.genruntimeconfig.cache
+C:\Users\Classtime.PC_3_506_14\source\repos\09-UpcastingDowncastingExplicitImplicit\obj\Debug\net8.0\ref\09-UpcastingDowncastingExplicitImplicit.dll
