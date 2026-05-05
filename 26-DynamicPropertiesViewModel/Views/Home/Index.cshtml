@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var data = ViewData["Students"];
+}
+@model HomeVM
+@using _26_DynamicPropertiesViewModel.Models
+@using _26_DynamicPropertiesViewModel.ViewModels
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+@* 
+<ul>
+    @foreach (Student item in data as List<Student>)
+    {
+        <li>@item.Id, @item.Name, @item.Surname</li>        
+    }
+</ul> *@
+
+@foreach (Teacher teacher in Model.Teachers)
+{
+    <li>@teacher.Id, @teacher.Name,</li>
+}
+@foreach (Student student in Model.Students)
+{
+    <li>@student.Id, @student.Name, @student.Surname</li>
+}
