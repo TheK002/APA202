@@ -1,4 +1,5 @@
 using _27_FrontToBackSqlConnection.Data;
+using _27_FrontToBackSqlConnection.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -15,8 +16,15 @@ namespace _27_FrontToBackSqlConnection
 
             builder.Services.AddDbContext<AppDB>(opt =>
             {
-                opt.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Task27DB;Trusted_Connection=True;TrustServerCertificate=True");
+                opt.UseSqlServer(builder.Configuration.GetConnectionString("default"));
             });
+
+            //bu
+            //ilder.Services.AddSingleton<EmailService>();
+
+            builder.Services.AddScoped<IEmailService, TestService>();
+
+            //builder.Services.AddTransient<EmailService>();
 
             var app = builder.Build();
 

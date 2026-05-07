@@ -1,7 +1,10 @@
 using _27_FrontToBackSqlConnection.Data;
 using _27_FrontToBackSqlConnection.Models;
+using _27_FrontToBackSqlConnection.Services;
 using _27_FrontToBackSqlConnection.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
 namespace _27_FrontToBackSqlConnection.Controllers
@@ -15,23 +18,25 @@ namespace _27_FrontToBackSqlConnection.Controllers
             _context = context;
         }
 
-        List<Slider> _sliders = new List<Slider>
-        { 
-            new Slider() {Title="111", Subtitle="11", Description="1", Image="1-270x300.webp", Order=1 },
-            new Slider() {Title="222", Subtitle="22", Description="2", Image="1-270x300.webp", Order=2 },
-            new Slider() {Title="333", Subtitle="33", Description="3", Image="1-270x300.webp", Order=3 },
-
-        };
-
-
         public IActionResult Index()
         {
-            _context.AddRange(_sliders);
-            _context.SaveChanges();
+            Product product = _context.Products.FirstOrDefault();
+
+            Category category = _context.Categories.FirstOrDefault(c => c.Id==product.CategoryId);
+
+            List<Slider> sliders = _context.Sliders
+                .Where(s => !s.IsDeleted)
+                .OrderBy(s => s.Order)
+                .Take(2)
+                .ToList();
+             
+            List<Product> products = _context.Products.Where(p => !p.IsDeleted).Include(p => p.ProductImages).ToList();
 
             HomeVM HomeVM = new()
             {
-                Sliders = _sliders.OrderBy(s=>s.Order).Take(2).ToList() 
+                Sliders = sliders,
+
+                Products = products
 
             };
 
