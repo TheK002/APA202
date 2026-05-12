@@ -1,5 +1,4 @@
-﻿@using _27_FrontToBackSqlConnection.Models
-@using _27_FrontToBackSqlConnection.ViewModels
+﻿
 @model HomeVM
 
 
@@ -153,7 +152,7 @@
                                 <div class="col-xl-3 col-md-4 col-sm-6">
                                     <div class="product-item">
                                         <div class="product-img">
-                                            <a href="shop.html">
+                                            <a asp-controller="/shop" asp-action="index">
                                                 <img class="primary-img"
                                                      src="assets/images/website-images//@product.ProductImages.FirstOrDefault(pi => pi.IsPrimary==true)?.Image"
                                                      alt="Product Images" />
