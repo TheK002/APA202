@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 {
-    [Area("AdminPanel")]
+    [Area("AdminPanel")]  // This MUST match exactly
+    [Route("adminpanel/[controller]/[action]")]
     public class CategoryController : Controller
     {
         private readonly AppDB _context;
@@ -30,6 +31,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(Category category)
         {
@@ -38,7 +40,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                 return View();
             }
 
-            bool existCategory = await _context.Categories.AnyAsync(c=>c.Name.Trim() == category.Name.Trim())
+            bool existCategory = await _context.Categories.AnyAsync(c => c.Name.Trim() == category.Name.Trim());
 
 
             if (existCategory)
@@ -47,10 +49,10 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                 return View(category);
             }
 
-            await _context.SaveChangesAsync();
+            _context.Categories.Add(category);
             await _context.SaveChangesAsync();
         
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
 
         }
 
