@@ -18,7 +18,7 @@
                                     #
                                 </th>
                                 <th>
-                                    name
+                                    Title
                                 </th>
                                 <th>
                                     Products
@@ -29,22 +29,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(Category category in Model)
+                            @foreach (Slider slider in Model)
                             {
                                 <tr class="table-info">
                                     <td>
-                                        <p>@(++count)</p>
+                                        <img src="~/assets/images/blog/medium-size/1-1-310x220.jpg" alt="Alternate Text" />
                                     </td>
                                     <td>
-                                        <p>@category.Name</p>
+                                        <p>@slider.Title</p>
                                     </td>
                                     <td>
-                                        <p>@category.Products.Count</p>
+                                        <p>@slider.Description</p>
                                     </td>
                                     <td>
-                                        <a asp-action="update" asp-route-id="@category.Id" class="btn btn-warning btn-rounded btn-fw">Edit</a>
-                                        <a asp-action="delete" asp-route-id="@category.Id" class="btn btn-danger btn-rounded btn-fw">Delete</a>
-                                        <a asp-action="Detail" asp-route-id="@category.Id" class="btn btn-info btn-rounded btn-fw">Detail</a>
+                                        <a asp-action="update" asp-route-id="@slider.Id" class="btn btn-warning btn-rounded btn-fw">Edit</a>
+                                        <a asp-action="delete" asp-route-id="@slider.Id" class="btn btn-danger btn-rounded btn-fw">Delete</a>
+                                        <a asp-action="Detail" asp-route-id="@slider.Id" class="btn btn-info btn-rounded btn-fw">Detail</a>
                                     </td>
                                
                                 </tr>

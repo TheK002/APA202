@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace _27_FrontToBackSqlConnection.Models
 {
     public class Slider : BaseEntity
@@ -8,5 +10,7 @@ namespace _27_FrontToBackSqlConnection.Models
         public string Subtitle { get; set; }
         public string Description { get; set; }
         public int Order { get; set; }
+        [NotMapped]
+        public IFormFile Photo { get; set; }
     }
 }
