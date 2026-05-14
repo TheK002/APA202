@@ -10,15 +10,21 @@
                 <p class="card-description">
                 </p>
                 <div class="table-responsive pt-3">
-                    <a asp-area="AdminPanel" asp-controller="Category" asp-action="Create" class="btn btn-success btn-rounded btn-fw">Create</a>
+                    <a asp-area="AdminPanel" asp-controller="Slider" asp-action="Create" class="btn btn-success btn-rounded btn-fw">Create</a>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>
-                                    #
+                                    No
+                                </th>
+                                <th>
+                                    Image
                                 </th>
                                 <th>
                                     Title
+                                </th>
+                                <th>
+                                    Subtitle
                                 </th>
                                 <th>
                                     Products
@@ -33,10 +39,16 @@
                             {
                                 <tr class="table-info">
                                     <td>
-                                        <img src="~/assets/images/blog/medium-size/1-1-310x220.jpg" alt="Alternate Text" />
+                                        <p>@slider.Id</p
+                                    </td>
+                                    <td>
+                                        <img src="~/assets/images/website-images/@slider.Image" alt="@slider.Title" />
                                     </td>
                                     <td>
                                         <p>@slider.Title</p>
+                                    </td>
+                                    <td>
+                                        <p>@slider.Subtitle</p>
                                     </td>
                                     <td>
                                         <p>@slider.Description</p>

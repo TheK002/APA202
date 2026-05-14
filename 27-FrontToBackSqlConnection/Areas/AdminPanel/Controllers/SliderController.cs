@@ -5,28 +5,42 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 {
+    [Area("AdminPanel")]
+    [Route("adminpanel/[controller]/[action]")]
     public class SliderController : Controller
     {
         private readonly AppDB _context;
+        private readonly IWebHostEnvironment _env;
 
-        public SliderController(AppDB context) 
+        public SliderController(AppDB context, IWebHostEnvironment env) 
         {
-            _context = context;  
+            _context = context;
+            _env = env;
         }
         public async Task<IActionResult> Index()
         {
-            List<Slider> slides = await _context.Sliders.Where(s => s.IsDeleted).ToListAsync();
+            List<Slider> slides = await _context.Sliders.Where(s => !s.IsDeleted).ToListAsync();
 
-            return View();
+            return View(slides);
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View(); 
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(Slider slider)
         {
+            if (!ModelState.IsValid) return View();
+            
+
             if (!slider.Photo.ContentType.Contains("image/"))
             {
                 ModelState.AddModelError(nameof(Slider.Photo), "type is incorrect");
                 return View();
             }
+
             if (slider.Photo.Length > 2 * 1024 * 1024)
             {
             ModelState.AddModelError(nameof(Slider.Photo), "File size is above 2mb");
@@ -34,7 +48,9 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 
             }
 
-            string path = "C:\\Users\\ilkin\\OneDrive\\Desktop\\APA202\\27-FrontToBackSqlConnection\\wwwroot\\assets\\images\\website-images\\1--1rnu4p.png";
+            string fileName = string.Concat(Guid.NewGuid().ToString(), slider.Photo.FileName);
+
+            string path = Path.Combine(_env.WebRootPath, "assets", "images", "brand", slider.Photo.FileName);
 
             FileStream fileStream = new FileStream(path, FileMode.Create);
 
@@ -42,7 +58,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 
             fileStream.Close();
             
-            slider.Image = slider.Photo.FileName;
+            slider.Image = fileName;
 
             await _context.AddAsync(slider);
 
@@ -51,5 +67,6 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+
     }
 }

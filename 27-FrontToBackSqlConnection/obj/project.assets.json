@@ -7347,23 +7347,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ilkin\\.nuget\\packages\\": {},
+    "C:\\Users\\Classtime.PC_3_506_14\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ilkin\\OneDrive\\Desktop\\APA202\\27-FrontToBackSqlConnection\\27-FrontToBackSqlConnection.csproj",
+      "projectUniqueName": "C:\\Users\\Classtime.PC_3_506_14\\Desktop\\APA202\\27-FrontToBackSqlConnection\\27-FrontToBackSqlConnection.csproj",
       "projectName": "27-FrontToBackSqlConnection",
-      "projectPath": "C:\\Users\\ilkin\\OneDrive\\Desktop\\APA202\\27-FrontToBackSqlConnection\\27-FrontToBackSqlConnection.csproj",
-      "packagesPath": "C:\\Users\\ilkin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ilkin\\OneDrive\\Desktop\\APA202\\27-FrontToBackSqlConnection\\obj\\",
+      "projectPath": "C:\\Users\\Classtime.PC_3_506_14\\Desktop\\APA202\\27-FrontToBackSqlConnection\\27-FrontToBackSqlConnection.csproj",
+      "packagesPath": "C:\\Users\\Classtime.PC_3_506_14\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Classtime.PC_3_506_14\\Desktop\\APA202\\27-FrontToBackSqlConnection\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ilkin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Classtime.PC_3_506_14\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7372,11 +7372,11 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
-          "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {}
         }
@@ -7390,12 +7390,10 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "10.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
-        "framework": "net8.0",
         "targetAlias": "net8.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
@@ -7436,7 +7434,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

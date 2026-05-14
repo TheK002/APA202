@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 {
-    [Area("AdminPanel")]  // This MUST match exactly
+    [Area("AdminPanel")]  
     [Route("adminpanel/[controller]/[action]")]
     public class CategoryController : Controller
     {
