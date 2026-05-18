@@ -1,0 +1,56 @@
+﻿@using _27_FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Sliders
+@model SliderDetailVM
+
+<div class="row">
+    <div class="col-lg-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Slider Detail</h4>
+                <p class="card-description">
+                </p>
+                <div class="table-responsive pt-3">
+                    <a asp-area="AdminPanel" asp-controller="Slider" asp-action="Create" class="btn btn-success btn-rounded btn-fw">Create</a>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Image
+                                </th>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Subtitle
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr class="table-info">
+                                    <td>
+                                        <img src="~/assets/images/website-images/@Model.Image" alt="@Model.Title" />
+                                    </td>
+                                    <td>
+                                        <p>@Model.Title</p>
+                                    </td>
+                                    <td>
+                                        <p>@Model.Subtitle</p>
+                                    </td>
+                                    <td>
+                                        <p>@Model.Order</p>
+                                    </td
+                                    <td>
+                                        <p>@Model.Description</p>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+</div>

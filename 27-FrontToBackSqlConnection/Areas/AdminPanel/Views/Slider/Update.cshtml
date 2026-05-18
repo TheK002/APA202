@@ -1,15 +1,13 @@
-﻿@model SliderCreateVM
+﻿@model SliderUpdateVM
 
 <div class="row">
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Create Slider</h4>
-                <form asp-action="Create" class="forms-sample" enctype="multipart/form-data" method="post">
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="name">Image</label>
-                        <input asp-for="Photo" type="file" class="form-control" accept="image/*">
-                        <span asp-validation-for="Photo" class="text-danger"></span>
+                        <img src="~/assets/images/website-images/@Model.Image" alt="Text" />
                     </div>
                     
                     <div class="form-group">
@@ -17,7 +15,7 @@
                         <input asp-for="Title" class="form-control" placeholder="Title">
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
-                    
+
                     
                     <div class="form-group">
                         <label asp-for="Subtitle">Subtitle</label>
@@ -39,7 +37,7 @@
                     
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                     <a asp-action="Index" class="btn btn-light">Cancel</a>
-                </form>
+               </form>
             </div>
         </div>
     </div>
