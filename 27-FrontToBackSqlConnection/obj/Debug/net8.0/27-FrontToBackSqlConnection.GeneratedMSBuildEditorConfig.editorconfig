@@ -17,6 +17,7 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v8.0
+build_property.EntryPointFilePath = 
 build_property.RootNamespace = _27_FrontToBackSqlConnection
 build_property.RootNamespace = _27_FrontToBackSqlConnection
 build_property.ProjectDir = C:\Users\ilkin\OneDrive\Desktop\APA202\27-FrontToBackSqlConnection\
@@ -48,6 +49,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ilkin/OneDrive/Desktop/APA202/27-FrontToBackSqlConnection/Areas/AdminPanel/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xEYXNoYm9hcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ilkin/OneDrive/Desktop/APA202/27-FrontToBackSqlConnection/Areas/AdminPanel/Views/Product/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xQcm9kdWN0XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ilkin/OneDrive/Desktop/APA202/27-FrontToBackSqlConnection/Areas/AdminPanel/Views/Shared/_Layout.cshtml]

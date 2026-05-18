@@ -1,0 +1,53 @@
+﻿@using _27_FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Product
+@model ProductCreateVM
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Product</h4>
+                <form asp-action="Create" class="forms-sample" enctype="multipart/form-data" method="post">
+                    @* <div class="form-group">
+                        <label for="name">Image</label>
+                        <input asp-for="Photo" type="file" class="form-control" accept="image/*">
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div> *@
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Title">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label for="name">Price</label>
+                        <input asp-for="Price" class="form-control" placeholder="Subtitle">
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">SKU</label>
+                        <input asp-for="SKU" class="form-control" placeholder="Order" type="number">
+                        <span asp-validation-for="SKU" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Category</label>
+                        <select asp-for="CategoryId" class="form-control" asp-items="new SelectList(@Model.Categories, nameof(Category.Id), nameof(Category.Name))">
+                            <option value="" disabled>Chose category</option>
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <textarea asp-for="Description" class="form-control" placeholder="Description" rows="5"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
