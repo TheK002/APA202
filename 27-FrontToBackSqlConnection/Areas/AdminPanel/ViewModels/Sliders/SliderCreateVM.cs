@@ -15,6 +15,6 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.ViewModels
         [Required]
         public int Order { get; set; }
         [Required]
-        public IFormFile Photo { get; set; }
+        public required IFormFile? Photo { get; set; }
     }
 }

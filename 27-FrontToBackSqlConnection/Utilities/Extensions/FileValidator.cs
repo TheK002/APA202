@@ -31,8 +31,7 @@ namespace _27_FrontToBackSqlConnection.Utilities.Extensions
 
         public static async Task<string> CreateFile(this IFormFile file, params string[] roots)
         {
-            string fileName = string.Concat(Guid.NewGuid().ToString(), file.Photo.FileName);
-
+            string fileName = string.Concat(Guid.NewGuid().ToString(), file.FileName);
             string path = string.Empty;
 
             for (int i = 0; i < roots.Length; i++)
@@ -41,7 +40,6 @@ namespace _27_FrontToBackSqlConnection.Utilities.Extensions
             }
 
             path = Path.Combine(path, fileName);
-
 
             using (FileStream fileStream = new FileStream(path, FileMode.Create))
             {
