@@ -125,10 +125,36 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                 product.ProductsTags = productCreateVM.TagIds.Select(tId => new ProductTag { TagId = tId }).ToList();
             }
 
+            string text = string.Empty;
+
+            //if (IFormFile file in productCreateVM.AdditionalPhotos)
+            //{
+                foreach (IFormFile file in productCreateVM.AdditionalPhotos)
+                {
+                    if (!file.CheckFiletype("image/"))
+                    {
+                        text += $"{file.FileName} type is not correct";
+                        continue;
+                    }
+
+                    if (!file.CheckFileSize(FileSize.MB, 2))
+                    {
+                        text += $"{file.FileName} size is not correct";
+                        continue;
+                    }
+
+                    product.ProductImages.Add(new ProductImage
+                    {
+                        Image = await file.CreateFile(_env.WebRootPath, "assets", "images", "website-images"),
+                        IsPrimary = null,
+                    });
+                }
+            //}
+
+            TempData["FileWarning"] = text;
 
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
-
 
             return RedirectToAction(nameof(Index));
         }
@@ -138,11 +164,13 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
         {
             if (id is null || id < 1) return BadRequest();
             
-            Product? product = await _context.Products.Include(p=>p.ProductsTags).FirstOrDefaultAsync(p=> p.Id == id);
+            Product? product = await _context.Products
+                .Include(p => p.ProductImages)
+                .Include(p=>p.ProductsTags).FirstOrDefaultAsync(p=> p.Id == id);
 
             if (product is null) return NotFound();
 
-            ProductUpadateVM productUpadateVM = new()
+            ProductUpdateVM productUpadateVM = new()
             {
                 Name = product.Name,
                 Price = product.Price,
@@ -151,13 +179,14 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                 CategoryId = product.CategoryId,
                 TagIds = product.ProductsTags.Select(pt=>pt.TagId).ToList(),
                 Categories = await _context.Categories.Where(c=>!c.IsDeleted).ToListAsync(),
-                Tags = await _context.Tags.Where(t=>!t.IsDeleted).ToListAsync()
+                Tags = await _context.Tags.Where(t=>!t.IsDeleted).ToListAsync(),
+                productImages = await _context.ProductsImages.Where(
             };
 
             return View(productUpadateVM);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int? id, ProductUpadateVM productUpadateVM)
+        public async Task<IActionResult> Update(int? id, ProductUpdateVM productUpadateVM)
         {
             if (id is null || id < 1) return BadRequest();
 

@@ -1,5 +1,12 @@
 ﻿@using _27_FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Product
-@model ProductCreateVM
+
+@model ProductUpdateVM
+
+@{
+    ProductImage mainImage = Model.productImages.FirstOrDefault(pi => pi.IsPrimary == true);
+    ProductImage hoverImage = Model.productImages.FirstOrDefault(pi => pi.IsPrimary == false);
+    List<ProductImage> addImage = Model.productImages.Where(pi => pi.IsPrimary == null).ToList();
+}
 
 <div class="row">
     <div class="col-md-6 grid-margin stretch-card">
@@ -7,12 +14,29 @@
             <div class="card-body">
                 <h4 class="card-title">Create Product</h4>
                 <form asp-action="Create" class="forms-sample" enctype="multipart/form-data" method="post">
-                    @* <div class="form-group">
-                        <label for="name">Image</label>
-                        <input asp-for="Photo" type="file" class="form-control" accept="image/*">
-                        <span asp-validation-for="Photo" class="text-danger"></span>
-                    </div> *@
-
+                    <div class="form-group">
+                        <img src="~/assets/images/website-images/@mainImage.Image" alt="Text" />
+                        <label for="name">Main Image</label>
+                        <input asp-for="MainPhoto" type="file" class="form-control" accept="image/*">
+                        <span asp-validation-for="MainPhoto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <img src="~/assets/images/website-images/@hoverImage.Image" alt="Text" />
+                        <label for="name">Hover Image</label>
+                        <input asp-for="HoverPhoto" type="file" class="form-control" accept="image/*">
+                        <span asp-validation-for="HoverPhoto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            @foreach (var item in addImage)
+                                {
+                                    <img src="~/assets/images/website-images/@item.Image" alt="Text" />
+                                }
+                            </div>
+                        <label for="name">Additional Image</label>
+                        <input asp-for="HoverPhoto" type="file" class="form-control" accept="image/*">
+                        <span asp-validation-for="HoverPhoto" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input asp-for="Name" class="form-control" placeholder="Title">

@@ -2,8 +2,11 @@
 
 namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Product
 {
-    public class ProductUpadateVM
+    public class ProductUpdateVM
     {
+        public IFormFile MainPhoto { get; set; }
+        public IFormFile HoverPhoto { get; set; }
+        public List<IFormFile>? AdditionalPhotos { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string SKU { get; set; }
@@ -12,5 +15,6 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Product
         public List<int>? TagIds { get; set; }
         public List<Category>? Categories { get; set; }
         public List<Tag>? Tags { get; set; }
+        public List<ProductImage> productImages { get; set; }
     }
 }
