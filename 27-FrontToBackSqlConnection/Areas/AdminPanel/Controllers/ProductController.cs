@@ -26,15 +26,15 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
             List<ProductGetVM> productGetVM = await _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.ProductImages)
-                .Where(p=>!p.IsDeleted)
-                .Select(p=> new ProductGetVM
+                .Where(p => !p.IsDeleted)
+                .Select(p => new ProductGetVM
                 {
                     Id = p.Id,
                     Name = p.Name,
                     Price = p.Price,
                     SKU = p.SKU,
                     CategoryName = p.Category.Name,
-                    Image = p.ProductImages.FirstOrDefault().Image
+                    Image = p.ProductImages.FirstOrDefault(p => p.IsPrimary == true).Image
                 })
                 .ToListAsync();
 
@@ -45,8 +45,8 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
         {
             ProductCreateVM productCreateVM = new()
             {
-                Categories = await _context.Categories.Where(p=>!p.IsDeleted).ToListAsync(),
-                Tags = await _context.Tags.Where(p=>!p.IsDeleted).ToListAsync(),
+                Categories = await _context.Categories.Where(p => !p.IsDeleted).ToListAsync(),
+                Tags = await _context.Tags.Where(p => !p.IsDeleted).ToListAsync(),
             };
 
             return View(productCreateVM);
@@ -60,31 +60,39 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 
             if (!ModelState.IsValid) return View(productCreateVM);
 
-            if (!productCreateVM.MainPhoto.CheckFiletype("image/"))
+            if (productCreateVM.MainPhoto is not null)
             {
-                ModelState.AddModelError(nameof(productCreateVM.MainPhoto), "File type is incorrect");
-                return View(productCreateVM);
+                if (!productCreateVM.MainPhoto.CheckFiletype("image/"))
+                {
+                    ModelState.AddModelError(nameof(productCreateVM.MainPhoto), "File type is incorrect");
+                    return View(productCreateVM);
+                }
+
+                if (!productCreateVM.MainPhoto.CheckFileSize(FileSize.MB, 2))
+                {
+                    ModelState.AddModelError(nameof(productCreateVM.MainPhoto), "size must be less than 2mb");
+                    return View(productCreateVM);
+                }
             }
 
-            if (!productCreateVM.MainPhoto.CheckFileSize(FileSize.MB, 2))
+            if (productCreateVM.HoverPhoto is not null)
             {
-                ModelState.AddModelError(nameof(productCreateVM.MainPhoto), "size must be less than 2mb");
-                return View(productCreateVM);
+
+                if (!productCreateVM.HoverPhoto.CheckFileSize(FileSize.MB, 2))
+                {
+                    ModelState.AddModelError(nameof(productCreateVM.HoverPhoto), "size must be less than 2mb");
+                    return View(productCreateVM);
+                }
+
+                if (!productCreateVM.HoverPhoto.CheckFiletype("image/"))
+                {
+                    ModelState.AddModelError(nameof(productCreateVM.HoverPhoto), "File type is incorrect");
+                    return View(productCreateVM);
+                }
             }
 
-            if (!productCreateVM.HoverPhoto.CheckFileSize(FileSize.MB, 2))
-            {
-                ModelState.AddModelError(nameof(productCreateVM.HoverPhoto), "size must be less than 2mb");
-                return View(productCreateVM);
-            }
 
-            if (!productCreateVM.HoverPhoto.CheckFiletype("image/"))
-            {
-                ModelState.AddModelError(nameof(productCreateVM.HoverPhoto), "File type is incorrect");
-                return View(productCreateVM);
-            }
-
-            bool existCategory = productCreateVM.Categories.Any(c=>c.Id == productCreateVM.CategoryId);
+            bool existCategory = productCreateVM.Categories.Any(c => c.Id == productCreateVM.CategoryId);
             if (!existCategory)
             {
                 ModelState.AddModelError(nameof(productCreateVM.CategoryId), "Category does't exist");
@@ -98,7 +106,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                 return View(productCreateVM);
             }
 
-                ProductImage mainImage = new()
+            ProductImage mainImage = new()
             {
                 Image = await productCreateVM.MainPhoto.CreateFile(_env.WebRootPath, "assets", "images", "website-images"),
                 IsPrimary = true,
@@ -117,7 +125,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                 CategoryId = productCreateVM.CategoryId.Value,
                 SKU = productCreateVM.SKU,
                 Description = productCreateVM.Description,
-                ProductImages = new List<ProductImage> {  mainImage, hoverImage  }
+                ProductImages = new List<ProductImage> { mainImage, hoverImage }
             };
 
             if (productCreateVM.TagIds is not null)
@@ -125,10 +133,11 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                 product.ProductsTags = productCreateVM.TagIds.Select(tId => new ProductTag { TagId = tId }).ToList();
             }
 
-            string text = string.Empty;
 
-            //if (IFormFile file in productCreateVM.AdditionalPhotos)
-            //{
+            if (productCreateVM.AdditionalPhotos is not null)
+            {
+                string text = string.Empty;
+
                 foreach (IFormFile file in productCreateVM.AdditionalPhotos)
                 {
                     if (!file.CheckFiletype("image/"))
@@ -149,9 +158,9 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                         IsPrimary = null,
                     });
                 }
-            //}
+                TempData["FileWarning"] = text;
+            }
 
-            TempData["FileWarning"] = text;
 
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
@@ -163,10 +172,10 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
         public async Task<IActionResult> Update(int? id)
         {
             if (id is null || id < 1) return BadRequest();
-            
+
             Product? product = await _context.Products
                 .Include(p => p.ProductImages)
-                .Include(p=>p.ProductsTags).FirstOrDefaultAsync(p=> p.Id == id);
+                .Include(p => p.ProductsTags).FirstOrDefaultAsync(p => p.Id == id);
 
             if (product is null) return NotFound();
 
@@ -177,9 +186,9 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                 SKU = product.SKU,
                 Description = product.Description,
                 CategoryId = product.CategoryId,
-                TagIds = product.ProductsTags.Select(pt=>pt.TagId).ToList(),
-                Categories = await _context.Categories.Where(c=>!c.IsDeleted).ToListAsync(),
-                Tags = await _context.Tags.Where(t=>!t.IsDeleted).ToListAsync(),
+                TagIds = product.ProductsTags.Select(pt => pt.TagId).ToList(),
+                Categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync(),
+                Tags = await _context.Tags.Where(t => !t.IsDeleted).ToListAsync(),
                 productImages = await _context.ProductsImages.Where(
             };
 
@@ -190,18 +199,20 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
         {
             if (id is null || id < 1) return BadRequest();
 
-            productUpadateVM.Categories = await _context.Categories.Where(c=>!!c.IsDeleted).ToListAsync();
-            productUpadateVM.Tags = await _context.Tags.Where(t=>!!t.IsDeleted).ToListAsync();
-                
+            Product? product = await _context.Products.Include(p =>p.ProductImages).Include(p => p.ProductsTags).FirstOrDefaultAsync(p => p.Id == id);
+            if (product is null) return NotFound();
+
+            productUpadateVM.Categories = await _context.Categories.Where(c => !!c.IsDeleted).ToListAsync();
+            productUpadateVM.Tags = await _context.Tags.Where(t => !!t.IsDeleted).ToListAsync();
+            productUpadateVM.ProductImages = product.ProductImages;
+
             if (!ModelState.IsValid)
             {
                 return View(productUpadateVM);
             }
+             
 
-            Product? product = await _context.Products.Include(p=>p.ProductsTags).FirstOrDefaultAsync(p => p.Id == id);
-            if (product is null) return NotFound();
-
-            bool existCategory = productUpadateVM.Categories.Any(c=>c.Id == productUpadateVM.CategoryId);
+            bool existCategory = productUpadateVM.Categories.Any(c => c.Id == productUpadateVM.CategoryId);
             if (!existCategory)
             {
                 ModelState.AddModelError(nameof(productUpadateVM.CategoryId), "not exist");
@@ -210,19 +221,21 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 
             if (productUpadateVM.TagIds is not null)
             {
-                bool existTag = productUpadateVM.TagIds.Any(tagId => productUpadateVM.Tags.Exists(t=>t.Id == tagId));
+                bool existTag = productUpadateVM.TagIds.Any(tagId => productUpadateVM.Tags.Exists(t => t.Id == tagId));
                 if (existTag)
                 {
                     ModelState.AddModelError(nameof(productUpadateVM.TagIds), "not exist");
                     return View(productUpadateVM);
                 }
-            }
+            } 
 
             if (productUpadateVM.TagIds is not null)
             {
                 productUpadateVM.TagIds = new();
             }
-             
+
+            if (productUpadateVM.TagIds is not null)
+            {
                 List<ProductTag> deleteTags = product.ProductsTags
                     .Where(pTag => !productUpadateVM.TagIds
                     .Exists(tId => tId == pTag.TagId)).ToList();
@@ -232,12 +245,88 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                     .Exists(pTag => pTag.TagId == tId))
                     .Select(tId => new ProductTag { TagId = tId, ProductId = product.Id })
                     .ToList();
-                
-                
+
+
                 _context.ProductTags.RemoveRange(deleteTags);
                 _context.ProductTags.AddRange(createdTags);
-                
+            }
 
+            if (productUpadateVM.MainPhoto is not null)
+            {
+                string fileName = await productUpadateVM.MainPhoto.CreateFile(_env.WebRootPath, "assets", "images", "website-images");
+
+                ProductImage mainImage = product.ProductImages.FirstOrDefault(p => p.IsPrimary == true);
+
+                mainImage.Image.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
+
+                product.ProductImages.Remove(mainImage);
+
+                product.ProductImages.Add(new ProductImage
+                {
+                    Image = fileName,
+                    IsPrimary = true,
+                });
+            }
+
+            if (productUpadateVM.HoverPhoto is not null)
+            {
+                string fileName = await productUpadateVM.HoverPhoto.CreateFile(_env.WebRootPath, "assets", "images", "website-images");
+
+                ProductImage hoverImage = product.ProductImages.FirstOrDefault(p => p.IsPrimary == true);
+
+                hoverImage.Image.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
+
+                product.ProductImages.Remove(hoverImage);
+
+                product.ProductImages.Add(new ProductImage
+                {
+                    Image = fileName,
+                    IsPrimary = false,
+                });
+            }
+
+            if (productUpadateVM.ImageIds is null)
+            {
+                productUpadateVM.ImageIds = new List<int>();
+            }
+
+            var deletedImages = product.ProductImages
+                .Where(pi => !productUpadateVM.ImageIds
+                .Exists(imgId => imgId == pi.Id) && pi.IsPrimary == null)
+                .ToList();
+
+            deletedImages.ForEach(di => di.Image.DeleteFile(_env.WebRootPath, "assets", "images", "website-images"));
+
+            _context.ProductImages.RemoveRange(deletedImages);
+
+            if (productUpadateVM.AdditionalPhotos is not null)
+            {
+                string text = string.Empty;
+
+                foreach (IFormFile file in productUpadateVM.AdditionalPhotos)
+                {
+                    
+                    if (!file.CheckFiletype("image/"))
+                    {
+                        text += $"<p class=\"text-danger\">{file.FileName} type is not correct</p>";
+                        continue;
+                    }
+
+                    if (!file.CheckFileSize(FileSize.MB, 2))
+                    {
+                        text += $"<p class=\"text-danger\">{file.FileName} size is not correct</p>";
+                        continue;
+                    }
+
+                    product.ProductImages.Add(new ProductImage
+                    {
+
+                        Image = await file.CreateFile(_env.WebRootPath, "assets", "images", "website-images"),
+                        IsPrimary = null,
+                    });
+                }
+                TempData["FileWarning"] = text;
+            } 
 
             product.Name = productUpadateVM.Name;
             product.Price = productUpadateVM.Price;
@@ -247,7 +336,6 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 
 
             await _context.SaveChangesAsync();
-                
             return RedirectToAction(nameof(Index));
         }
     }

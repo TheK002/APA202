@@ -40,17 +40,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (Category category in Model)
+                            @foreach (ProductGetVM productGetVM in Model)
                             {
                                 <tr class="table-info">
                                     <td>
                                         <p>@(++count)</p>
                                     </td>
                                     <td>
-                                        <p>@category.Name</p>
+                                        <p>@productGetVM.Image</p>
+                                    </td>
+
+                                    <td>
+                                        <p>@productGetVM.Name</p>
                                     </td>
                                     <td>
-                                        <p>@category.Products.Count</p>
+                                        <p>@productGetVM.Price</p>
+                                    </td>
+                                    <td>
+                                        <p>@productGetVM.SKU</p>
+                                    </td>
+                                    <td>
+                                        <p>@productGetVM.</p>
                                     </td>
                                     <td>
                                         <a asp-action="update" asp-route-id="@category.Id" class="btn btn-warning btn-rounded btn-fw">Edit</a>

@@ -3,9 +3,9 @@
 @model ProductUpdateVM
 
 @{
-    ProductImage mainImage = Model.productImages.FirstOrDefault(pi => pi.IsPrimary == true);
-    ProductImage hoverImage = Model.productImages.FirstOrDefault(pi => pi.IsPrimary == false);
-    List<ProductImage> addImage = Model.productImages.Where(pi => pi.IsPrimary == null).ToList();
+    ProductImage mainImage = Model.ProductImages.FirstOrDefault(pi => pi.IsPrimary == true);
+    ProductImage hoverImage = Model.ProductImages.FirstOrDefault(pi => pi.IsPrimary == false);
+    List<ProductImage> addImage = Model.ProductImages.Where(pi => pi.IsPrimary == null).ToList();
 }
 
 <div class="row">
