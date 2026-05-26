@@ -189,7 +189,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                 TagIds = product.ProductsTags.Select(pt => pt.TagId).ToList(),
                 Categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync(),
                 Tags = await _context.Tags.Where(t => !t.IsDeleted).ToListAsync(),
-                productImages = await _context.ProductsImages.Where(
+                //productImages = await _context.ProductsImages.Where(
             };
 
             return View(productUpadateVM);

@@ -1,5 +1,7 @@
 using _27_FrontToBackSqlConnection.Data;
+using _27_FrontToBackSqlConnection.Models;
 using _27_FrontToBackSqlConnection.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -19,14 +21,25 @@ namespace _27_FrontToBackSqlConnection
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("default"));
             });
 
-            //bu
-            //ilder.Services.AddSingleton<EmailService>();
+            builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+            {
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequireNonAlphanumeric = false;
+
+                opt.User.RequireUniqueEmail = true;
+
+                opt.Lockout.MaxFailedAccessAttempts = 3;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+            }).AddEntityFrameworkStores<AppDB>().AddDefaultTokenProviders();
+
 
             builder.Services.AddScoped<IEmailService, TestService>();
 
-            //builder.Services.AddTransient<EmailService>();
-
             var app = builder.Build();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
 
             app.UseStaticFiles();
 

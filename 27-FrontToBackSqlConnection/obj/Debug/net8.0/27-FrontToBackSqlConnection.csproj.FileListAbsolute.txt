@@ -656,3 +656,8 @@ C:\Users\ilkin\OneDrive\Desktop\APA202\27-FrontToBackSqlConnection\obj\Debug\net
 C:\Users\ilkin\OneDrive\Desktop\APA202\27-FrontToBackSqlConnection\obj\Debug\net8.0\27-FrontToBackSqlConnection.pdb
 C:\Users\ilkin\OneDrive\Desktop\APA202\27-FrontToBackSqlConnection\obj\Debug\net8.0\27-FrontToBackSqlConnection.genruntimeconfig.cache
 C:\Users\ilkin\OneDrive\Desktop\APA202\27-FrontToBackSqlConnection\obj\Debug\net8.0\ref\27-FrontToBackSqlConnection.dll
+C:\Users\ilkin\OneDrive\Desktop\APA202\27-FrontToBackSqlConnection\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\ilkin\OneDrive\Desktop\APA202\27-FrontToBackSqlConnection\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\ilkin\OneDrive\Desktop\APA202\27-FrontToBackSqlConnection\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\ilkin\OneDrive\Desktop\APA202\27-FrontToBackSqlConnection\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\ilkin\OneDrive\Desktop\APA202\27-FrontToBackSqlConnection\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
