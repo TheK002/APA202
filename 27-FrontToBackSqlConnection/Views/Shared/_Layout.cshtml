@@ -143,20 +143,28 @@
                         >
                           <i class="pe-7s-users"></i>
                         </button>
-                        <ul
-                          class="dropdown-menu"
-                          aria-labelledby="settingButton"
-                        >
-                          <li>
-                            <a class="dropdown-item" href="my-account.html"
-                              >My account</a
-                            >
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="login-register.html"
-                              >Login | Register</a
-                            >
-                          </li>
+                        <ul class="dropdown-menu"
+                          aria-labelledby="settingButton">
+
+                        @if (User.Identity.IsAuthenticated)
+                            {
+                               <li>
+                                    <a class="dropdown-item" >@User.Identity.Name</a>
+                               </li>
+                               <li>
+                                    <a class="dropdown-item" asp-controller="account" asp-action="logout">Logout</a>
+                               </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a class="dropdown-item" asp-controller="account" asp-action="register">Register</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-controller="account" asp-action="login">Login</a>
+                                </li>                                                        
+                            }
+
                         </ul>
                       </li>
                       <li class="d-none d-lg-block">

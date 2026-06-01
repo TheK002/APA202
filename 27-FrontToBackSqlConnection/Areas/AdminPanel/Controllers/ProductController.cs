@@ -3,6 +3,7 @@ using _27_FrontToBackSqlConnection.Data;
 using _27_FrontToBackSqlConnection.Models;
 using _27_FrontToBackSqlConnection.Utilities.Enums;
 using _27_FrontToBackSqlConnection.Utilities.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -10,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    [Authorize(Roles ="Admin, Moderator, Mebmer")]
     public class ProductController : Controller
     {
         private readonly AppDB _context;
@@ -51,6 +53,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 
             return View(productCreateVM);
         }
+        
         [HttpPost]
         public async Task<IActionResult> Create(ProductCreateVM productCreateVM)
         {
@@ -167,8 +170,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int? id)
         {
             if (id is null || id < 1) return BadRequest();
